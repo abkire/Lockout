@@ -21,15 +21,15 @@ import RTLPage from "views/RTLPage/RTLPage.jsx";
 
 const dashboardRoutes = [
   {
-    path: "/dashboard",
-    name: "Dashboard",
+    path: "/adminCommands",
+    name: "AdminCommands",
     rtlName: "لوحة القيادة",
     icon: Dashboard,
     component: DashboardPage,
     layout: "/admin"
   },
   {
-    path: "/user",
+    path: "/users",
     name: "User Profile",
     rtlName: "ملف تعريفي للمستخدم",
     icon: Person,
@@ -37,27 +37,28 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    path: "/table",
-    name: "Table List",
+    path: "/trainers",
+    name: "Trainer List",
     rtlName: "قائمة الجدول",
     icon: "content_paste",
     component: TableList,
     layout: "/admin"
-  },
+  }
+  ,
+  {
+    path: "/logs",
+    name: "Logs",
+    rtlName: "الرموز",
+    icon: BubbleChart,
+    component: Icons,
+    layout: "/admin"
+  }/*,
   {
     path: "/typography",
     name: "Typography",
     rtlName: "طباعة",
     icon: LibraryBooks,
     component: Typography,
-    layout: "/admin"
-  },
-  {
-    path: "/icons",
-    name: "Icons",
-    rtlName: "الرموز",
-    icon: BubbleChart,
-    component: Icons,
     layout: "/admin"
   },
   {
@@ -76,14 +77,14 @@ const dashboardRoutes = [
     component: NotificationsPage,
     layout: "/admin"
   },
-  {
+  /*{
     path: "/upgrade-to-pro",
     name: "Upgrade To PRO",
     rtlName: "التطور للاحترافية",
     icon: Unarchive,
     component: UpgradeToPro,
     layout: "/admin"
-  },
+  },,
   {
     path: "/rtl-page",
     name: "RTL Support",
@@ -91,7 +92,7 @@ const dashboardRoutes = [
     icon: Language,
     component: RTLPage,
     layout: "/rtl"
-  }
+  }*/
 ];
 
 export default dashboardRoutes;

@@ -9,6 +9,7 @@ import GridContainer from "components/Grid/GridContainer.jsx";
 import Card from "components/Card/Card.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardBody from "components/Card/CardBody.jsx";
+import Table from "components/Table/Table.jsx";
 
 import iconsStyle from "assets/jss/material-dashboard-react/views/iconsStyle.jsx";
 
@@ -16,7 +17,28 @@ function Icons(props) {
   const { classes } = props;
   return (
     <GridContainer>
-      <GridItem xs={12} sm={12} md={12}>
+       <GridItem xs={12} sm={12} md={12}>
+        <Card>
+          <CardHeader color="primary">
+            <h4 className={classes.cardTitleWhite}>Logs Table</h4>
+            <p className={classes.cardCategoryWhite}>
+              A list jobs that have ran on our system.
+            </p>
+          </CardHeader>
+          <CardBody>
+            <Table
+              tableHeaderColor="primary"
+              tableHead={["Job ID", "User ID", "Machine ID", "Time in", "Time out"]}
+              tableData={[
+                ["1", "1000000000", "A", "August 9th: 1:05 PM","August 9th: 10:05 PM"],
+                ["2", "1000000001", "B", "August 10th: 2:05 PM","August 10th: 5:05 PM"]
+                
+              ]}
+            />
+          </CardBody>
+        </Card>
+      </GridItem>
+      {/*<GridItem xs={12} sm={12} md={12}>
         <Card plain>
           <CardHeader plain color="primary">
             <h4 className={classes.cardTitleWhite}>Material Design Icons</h4>
@@ -59,7 +81,7 @@ function Icons(props) {
             </Hidden>
           </CardBody>
         </Card>
-      </GridItem>
+            </GridItem>*/}
     </GridContainer>
   );
 }

@@ -189,7 +189,7 @@ function UpgradeToPro(props) {
                         Current Version
                       </Button>
                     </td>
-                    <td className={classes.center}>
+                    {/*<td className={classes.center}>
                       <Button
                         round
                         color="danger"
@@ -197,7 +197,7 @@ function UpgradeToPro(props) {
                       >
                         Upgrade to Pro
                       </Button>
-                    </td>
+                    </td>*/}
                   </tr>
                 </tbody>
               </table>

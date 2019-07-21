@@ -12,6 +12,8 @@ import CardHeader from "components/Card/CardHeader.jsx";
 import CardAvatar from "components/Card/CardAvatar.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
+import Table from "components/Table/Table.jsx";
+
 
 import avatar from "assets/img/faces/marc.jpg";
 
@@ -39,6 +41,30 @@ function UserProfile(props) {
   return (
     <div>
       <GridContainer>
+      
+      <GridItem xs={12} sm={12} md={12}>
+        <Card>
+          <CardHeader color="primary">
+            <h4 className={classes.cardTitleWhite}>User Table</h4>
+            <p className={classes.cardCategoryWhite}>
+              A list of Users registered in the database and their roles.
+            </p>
+          </CardHeader>
+          <CardBody>
+            <Table
+              tableHeaderColor="primary"
+              tableHead={["User_ID", "First name", "Last name", "email", "Admin?", "Trainer?"]}
+              tableData={[
+                ["1000000000", "TestF1", "TestL1", "TestEmail1","Yes", "Yes"],
+                ["1000000001", "TestF2", "TestL2", "TestEmail2","No","No"]
+                
+              ]}
+            />
+          </CardBody>
+        </Card>
+      </GridItem>
+      
+      {/*
         <GridItem xs={12} sm={12} md={8}>
           <Card>
             <CardHeader color="primary">
@@ -169,7 +195,7 @@ function UserProfile(props) {
               </Button>
             </CardBody>
           </Card>
-        </GridItem>
+                  </GridItem>*/}
       </GridContainer>
     </div>
   );
