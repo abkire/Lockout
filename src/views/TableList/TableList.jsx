@@ -87,7 +87,7 @@ function TableList(props) {
       <GridItem xs={12} sm={12} md={12}>
         <Card>
           <CardHeader color="primary">
-            <h4 className={classes.cardTitleWhite}>Trainer Section D</h4>
+            <h4 className={classes.cardTitleWhite}>Trainer Section C</h4>
             <p className={classes.cardCategoryWhite}>
               Trainer information for machine C
             </p>

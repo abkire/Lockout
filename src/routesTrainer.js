@@ -10,6 +10,7 @@ import Language from "@material-ui/icons/Language";
 // core components/views for Admin layout
 import DashboardPage from "views/Dashboard/Dashboard.jsx";
 import UserDashboardPage from "views/Dashboard/UserDashboard.jsx";
+import TrainerDashboardPage from "views/Dashboard/TrainerDashboard.jsx";
 
 import UserProfile from "views/UserProfile/UserProfile.jsx";
 import TableList from "views/TableList/TableList.jsx";
@@ -22,22 +23,22 @@ import UpgradeToPro from "views/UpgradeToPro/UpgradeToPro.jsx";
 import RTLPage from "views/RTLPage/RTLPage.jsx";
 
 const dashboardRoutes = [
+  
   {
-    path: "/adminCommands",
-    name: "AdminCommands",
+    path: "/trainerCommands",
+    name: "Trainer Commands",
     rtlName: "لوحة القيادة",
     icon: Dashboard,
-    component: DashboardPage,
-    layout: "/admin"
+    component: TrainerDashboardPage,
+    layout: "/trainer"
   },
-  
   {
     path: "/users",
     name: "User Profile",
     rtlName: "ملف تعريفي للمستخدم",
     icon: Person,
     component: UserProfile,
-    layout: "/admin"
+    layout: "/trainer"
   },
   {
     path: "/trainers",
@@ -45,17 +46,9 @@ const dashboardRoutes = [
     rtlName: "قائمة الجدول",
     icon: "content_paste",
     component: TableList,
-    layout: "/admin"
+    layout: "/trainer"
   }
-  ,
-  {
-    path: "/logs",
-    name: "Logs",
-    rtlName: "الرموز",
-    icon: BubbleChart,
-    component: Icons,
-    layout: "/admin"
-  }/*,
+  /*,
   {
     path: "/typography",
     name: "Typography",

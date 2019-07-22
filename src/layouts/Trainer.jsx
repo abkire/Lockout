@@ -8,12 +8,12 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 // core components
-import Navbar from "components/Navbars/Navbar.jsx";
+import Navbar from "components/Navbars/NavbarTrainer.jsx";
 import Footer from "components/Footer/Footer.jsx";
-import Sidebar from "components/Sidebar/Sidebar.jsx";
+import Sidebar from "components/Sidebar/SidebarTrainer.jsx";
 import FixedPlugin from "components/FixedPlugin/FixedPlugin.jsx";
 
-import routes from "routes.js";
+import routes from "routesTrainer.js";
 
 import dashboardStyle from "assets/jss/material-dashboard-react/layouts/dashboardStyle.jsx";
 
@@ -23,7 +23,7 @@ import logo from "assets/img/reactlogo.png";
 const switchRoutes = (
   <Switch>
     {routes.map((prop, key) => {
-      if (prop.layout === "/admin") {
+      if (prop.layout === "/trainer") {
         return (
           <Route
             path={prop.layout + prop.path}
@@ -36,7 +36,7 @@ const switchRoutes = (
   </Switch>
 );
 
-class Dashboard extends React.Component {
+class TrainerDashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -131,8 +131,8 @@ class Dashboard extends React.Component {
   }
 }
 
-Dashboard.propTypes = {
+TrainerDashboard.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(dashboardStyle)(Dashboard);
+export default withStyles(dashboardStyle)(TrainerDashboard);

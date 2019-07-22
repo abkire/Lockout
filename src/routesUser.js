@@ -22,22 +22,22 @@ import UpgradeToPro from "views/UpgradeToPro/UpgradeToPro.jsx";
 import RTLPage from "views/RTLPage/RTLPage.jsx";
 
 const dashboardRoutes = [
+  
   {
-    path: "/adminCommands",
-    name: "AdminCommands",
+    path: "/userCommands",
+    name: "UserCommands",
     rtlName: "لوحة القيادة",
     icon: Dashboard,
-    component: DashboardPage,
-    layout: "/admin"
+    component: UserDashboardPage,
+    layout: "/user"
   },
-  
   {
     path: "/users",
     name: "User Profile",
     rtlName: "ملف تعريفي للمستخدم",
     icon: Person,
     component: UserProfile,
-    layout: "/admin"
+    layout: "/user"
   },
   {
     path: "/trainers",
@@ -45,7 +45,7 @@ const dashboardRoutes = [
     rtlName: "قائمة الجدول",
     icon: "content_paste",
     component: TableList,
-    layout: "/admin"
+    layout: "/user"
   }
   ,
   {
@@ -54,7 +54,7 @@ const dashboardRoutes = [
     rtlName: "الرموز",
     icon: BubbleChart,
     component: Icons,
-    layout: "/admin"
+    layout: "/user"
   }/*,
   {
     path: "/typography",

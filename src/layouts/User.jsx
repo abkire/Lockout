@@ -8,22 +8,22 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 // core components
-import Navbar from "components/Navbars/Navbar.jsx";
 import Footer from "components/Footer/Footer.jsx";
-import Sidebar from "components/Sidebar/Sidebar.jsx";
+import SidebarUser from "components/Sidebar/SidebarUser.jsx";
 import FixedPlugin from "components/FixedPlugin/FixedPlugin.jsx";
 
-import routes from "routes.js";
+import routes from "routesUser.js";
 
 import dashboardStyle from "assets/jss/material-dashboard-react/layouts/dashboardStyle.jsx";
 
 import image from "assets/img/sidebar-2.jpg";
 import logo from "assets/img/reactlogo.png";
+import NavbarUser from "../components/Navbars/NavbarUser";
 
 const switchRoutes = (
   <Switch>
     {routes.map((prop, key) => {
-      if (prop.layout === "/admin") {
+      if (prop.layout === "/user") {
         return (
           <Route
             path={prop.layout + prop.path}
@@ -36,7 +36,7 @@ const switchRoutes = (
   </Switch>
 );
 
-class Dashboard extends React.Component {
+class UserDashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -64,7 +64,7 @@ class Dashboard extends React.Component {
     this.setState({ mobileOpen: !this.state.mobileOpen });
   };
   getRoute() {
-    return this.props.location.pathname !== "/admin/maps";
+    return this.props.location.pathname !== "/user/maps";
   }
   resizeFunction = () => {
     if (window.innerWidth >= 960) {
@@ -92,9 +92,9 @@ class Dashboard extends React.Component {
     const { classes, ...rest } = this.props;
     return (
       <div className={classes.wrapper}>
-        <Sidebar
+        <SidebarUser
           routes={routes}
-          logoText={"Lockout"}
+          logoText={"Login"}
           logo={logo}
           image={this.state.image}
           handleDrawerToggle={this.handleDrawerToggle}
@@ -103,7 +103,7 @@ class Dashboard extends React.Component {
           {...rest}
         />
         <div className={classes.mainPanel} ref="mainPanel">
-          <Navbar
+          <NavbarUser
             routes={routes}
             handleDrawerToggle={this.handleDrawerToggle}
             {...rest}
@@ -131,8 +131,8 @@ class Dashboard extends React.Component {
   }
 }
 
-Dashboard.propTypes = {
+UserDashboard.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(dashboardStyle)(Dashboard);
+export default withStyles(dashboardStyle)(UserDashboard);
