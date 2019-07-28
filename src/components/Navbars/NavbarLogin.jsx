@@ -15,6 +15,7 @@ import RTLNavbarLinks from "./RTLNavbarLinks.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 
 import headerStyle from "assets/jss/material-dashboard-react/components/headerStyle.jsx";
+import LoginNavbarLinks from "./LoginNavbarLinks.jsx";
 
 function Header({ ...props }) {
   function makeBrand() {
@@ -41,7 +42,7 @@ function Header({ ...props }) {
           </Button>
         </div>
         <Hidden smDown implementation="css">
-          {props.rtlActive ? <RTLNavbarLinks /> : <UserNavbarLinks />}
+          {props.rtlActive ? <RTLNavbarLinks /> : <LoginNavbarLinks />}
         </Hidden>
         <Hidden mdUp implementation="css">
           <IconButton

@@ -15,6 +15,7 @@ import UserNavbarLinks from "components/Navbars/LoginNavbarLinks.jsx";
 import RTLNavbarLinks from "components/Navbars/RTLNavbarLinks.jsx";
 
 import sidebarStyle from "assets/jss/material-dashboard-react/components/sidebarStyle.jsx";
+import LoginNavbarLinks from "../Navbars/LoginNavbarLinks";
 
 const SidebarLogin = ({ ...props }) => {
   // verifies if routeName is the one active (in browser input)
@@ -112,7 +113,7 @@ const SidebarLogin = ({ ...props }) => {
         >
           {brand}
           <div className={classes.sidebarWrapper}>
-            {props.rtlActive ? <RTLNavbarLinks /> : <UserNavbarLinks />}
+            {props.rtlActive ? <RTLNavbarLinks /> : <LoginNavbarLinks />}
             {links}
           </div>
           {image !== undefined ? (

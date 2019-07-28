@@ -62,6 +62,8 @@ class LoginDashboard extends React.Component {
   };
   handleDrawerToggle = () => {
     this.setState({ mobileOpen: !this.state.mobileOpen });
+   // if(this.state.loggedIn === "false" && this.state.)
+     // this.setState
   };
   getRoute() {
     return this.props.location.pathname !== "/user/maps";
