@@ -47,6 +47,7 @@ class LoginDashboard extends React.Component {
       mobileOpen: false
     };
   }
+  
   handleImageClick = image => {
     this.setState({ image: image });
   };
@@ -62,6 +63,7 @@ class LoginDashboard extends React.Component {
   };
   handleDrawerToggle = () => {
     this.setState({ mobileOpen: !this.state.mobileOpen });
+    console.log('handle drawer toggle');
    // if(this.state.loggedIn === "false" && this.state.)
      // this.setState
   };

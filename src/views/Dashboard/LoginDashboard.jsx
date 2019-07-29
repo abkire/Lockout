@@ -47,20 +47,69 @@ import {
 } from "variables/charts.jsx";
 
 import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardStyle.jsx";
+import { pink } from "@material-ui/core/colors";
 
 class LoginDashboard extends React.Component {
   state = {
     value: 0
   };
   handleChange = (event, value) => {
-    this.setState({ value });
+    console.log(`value changed!!!! value is ${event.target.value}`);
+
+    this.setState({ value: event.target.value });
+
   };
 
   handleChangeIndex = index => {
     this.setState({ value: index });
   };
+
+  
+
+  handleChange = e => {
+    console.log(`value changed!!!! value is ${e.target.value}`);
+  };
+  /*handleClick (event) {
+    alert('A login was attempted: '+event.value);
+    event.preventDefault();
+  };*/
+  handleUserInput = userid => {
+    this.setState({ userid: userid });
+  };
+  onUserInputChange = (event) => {
+    console.log("User id entry ..." + event.target.value)
+    if (event.target.value) {
+        this.setState({userId: event.target.value})
+    } else {
+        this.setState({userId: ''})
+    }
+}
+onPinInputChange = (event) => {
+  console.log("Pin id entry ..." + event.target.value)
+  if (event.target.value) {
+      this.setState({pinId: event.target.value})
+  } else {
+      this.setState({pinId: ''})
+  }
+}
+
+onLoginButtonPress = (event) => {
+  console.log("Login pressed ..." + event.target.value)
+  if (event.target.value) {
+    console.log("Login pressed ..." + this.state["pinId"]+" :"+this.state.userId)
+  } else {
+      this.setState({login: ''})
+  }
+}
+
+handleChange = e => {
+  console.log(`vvvvs ${e.target.value}`);
+  return e;
+};
+
   render() {
     const { classes } = this.props;
+    
     return (
       <div>
       <GridContainer>
@@ -68,7 +117,9 @@ class LoginDashboard extends React.Component {
       
       
         <GridItem xs={12} sm={12} md={10}>
-          <Card>
+          <Card >
+            
+            
             <CardHeader color="primary">
               <h4 className={classes.cardTitleWhite}>Login User</h4>
               <p className={classes.cardCategoryWhite}>Login to your acccount, if you have not created one click register on the sidebar.</p>
@@ -78,17 +129,22 @@ class LoginDashboard extends React.Component {
               <GridContainer>
                 <GridItem xs={12} sm={12} md={6}>
                   <CustomInput
+                 //   handleChange={this.handleChange}
+                 //   onSubmit={() => {console.log('userid changed')}}
                     labelText="User ID"
-                    id="user-id"
+                    id="userId"
                     formControlProps={{
                       fullWidth: true
                     }}
+                      
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={6}>
                   <CustomInput
+                  //  onChange={this.onPinInputChange}
                     labelText="Pin"
-                    id="pin"
+                    id="pinId"
+                    
                     formControlProps={{
                       fullWidth: true
                     }}
@@ -99,7 +155,11 @@ class LoginDashboard extends React.Component {
               
             </CardBody>
             <CardFooter>
-              <Button color="primary">Login</Button>
+              <Button color="primary"
+               onClick={this.onLoginButtonPress}
+              >
+              Login
+              </Button>
             </CardFooter>
           </Card>
         </GridItem>
