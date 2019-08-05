@@ -72,8 +72,8 @@ class DashboardTrainer extends React.Component {
         <GridItem xs={12} sm={12} md={4}>
           <Card>
             <CardHeader color="primary">
-              <h4 className={classes.cardTitleWhite}>Delete User</h4>
-              <p className={classes.cardCategoryWhite}>Deletes the user's profile</p>
+              <h4 className={classes.cardTitleWhite}>Authorize User</h4>
+              <p className={classes.cardCategoryWhite}>Authorize the user to use a section</p>
             </CardHeader>
             <CardBody>
               
@@ -89,8 +89,8 @@ class DashboardTrainer extends React.Component {
                 </GridItem>
                 <GridItem xs={12} sm={12} md={6}>
                   <CustomInput
-                    labelText="Pin"
-                    id="pin"
+                    labelText="Section"
+                    id="section-id"
                     formControlProps={{
                       fullWidth: true
                     }}
@@ -149,7 +149,7 @@ class DashboardTrainer extends React.Component {
               <Button color="primary">Add Trainer</Button>
             </CardFooter>
           </Card>
-        </GridItem>
+        </GridItem>{/*}
         <GridItem xs={12} sm={12} md={4}>
           <Card>
             <CardHeader color="primary">
@@ -194,7 +194,7 @@ class DashboardTrainer extends React.Component {
               <Button color="primary">Add Admin</Button>
             </CardFooter>
           </Card>
-        </GridItem>
+                  </GridItem>*/}
       </GridContainer>
     </div>
     );

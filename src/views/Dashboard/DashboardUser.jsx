@@ -65,10 +65,139 @@ class DashboardUser extends React.Component {
     if(user.level === 2 || user.level ===1) // only trainers / users should see this
     return (
       <div>
+
+
+<GridContainer>
+  <GridItem xs={12} sm={12} md={12}>
+        <Card>
+          <CardHeader color="primary">
+            <h4 className={classes.cardTitleWhite}>Your authorized Sections</h4>
+            <p className={classes.cardCategoryWhite}>
+            To get authorized contact the email of a trainer from the section you want. 
+            </p>
+          </CardHeader>
+          <CardBody>
+            <Table
+              tableHeaderColor="primary"
+              tableHead={["Section", "Usage Level","Last used"]}
+              tableData={[
+                ["3d Printers", "Not AUthorized" ,"08/05/2019 6:33 pm"],
+                ["Power drills", "Authorized User","08/06/2019 2:12 pm"]
+                
+              ]}
+            />
+          </CardBody>
+        </Card>
+      </GridItem>
+      <GridItem xs={12} sm={12} md={12}>
+        <Card>
+          <CardHeader color="primary">
+            <h4 className={classes.cardTitleWhite}>Trainer Section A</h4>
+            <p className={classes.cardCategoryWhite}>
+              Trainer information for machine A
+            </p>
+          </CardHeader>
+          <CardBody>
+            <Table
+              tableHeaderColor="primary"
+              tableHead={["First name", "Last Name", "Email", "Requests", "Added"]}
+              tableData={[
+                ["TestF1", "TestL1", "TestEmail1", "1","1"],
+                ["TestF2", "TestL2", "TestEmail2", "0","0"]
+                
+              ]}
+            />
+          </CardBody>
+        </Card>
+      </GridItem>
+      <GridItem xs={12} sm={12} md={12}>
+        <Card>
+          <CardHeader color="primary">
+            <h4 className={classes.cardTitleWhite}>Trainer Section B</h4>
+            <p className={classes.cardCategoryWhite}>
+              Trainer information for machine B
+            </p>
+          </CardHeader>
+          <CardBody>
+            <Table
+              tableHeaderColor="primary"
+              tableHead={["First name", "Last Name", "Email", "Requests", "Added"]}
+              tableData={[
+                ["TestF1", "TestL1", "TestEmail1", "1","1"]
+                
+              ]}
+            />
+          </CardBody>
+        </Card>
+      </GridItem>
+      <GridItem xs={12} sm={12} md={12}>
+        <Card>
+          <CardHeader color="primary">
+            <h4 className={classes.cardTitleWhite}>Trainer Section D</h4>
+            <p className={classes.cardCategoryWhite}>
+              Trainer information for machine C
+            </p>
+          </CardHeader>
+          <CardBody>
+            <Table
+              tableHeaderColor="primary"
+              tableHead={["First name", "Last Name", "Email", "Requests", "Added"]}
+              tableData={[
+                
+              ]}
+            />
+          </CardBody>
+        </Card>
+      </GridItem>
+      <GridItem xs={12} sm={12} md={12}>
+        <Card>
+          <CardHeader color="primary">
+            <h4 className={classes.cardTitleWhite}>Trainer Section D</h4>
+            <p className={classes.cardCategoryWhite}>
+              Trainer information for machine D
+            </p>
+          </CardHeader>
+          <CardBody>
+            <Table
+              tableHeaderColor="primary"
+              tableHead={["First name", "Last Name", "Email", "Requests", "Added"]}
+              tableData={[
+                
+                
+              ]}
+            />
+          </CardBody>
+        </Card>
+      </GridItem>
+      <GridItem xs={12} sm={12} md={12}>
+        <Card>
+          <CardHeader color="primary">
+            <h4 className={classes.cardTitleWhite}>Trainer Section E</h4>
+            <p className={classes.cardCategoryWhite}>
+              Trainer information for machine E
+            </p>
+          </CardHeader>
+          <CardBody>
+            <Table
+              tableHeaderColor="primary"
+              tableHead={["First name", "Last Name", "Email", "Requests", "Added"]}
+              tableData={[
+                
+              ]}
+            />
+          </CardBody>
+        </Card>
+      </GridItem>
+    </GridContainer>
+
+       {/*
+
+
+
       <GridContainer>
       
       
-      
+        
         <GridItem xs={12} sm={12} md={4}>
           <Card>
             <CardHeader color="primary">
@@ -108,8 +237,8 @@ class DashboardUser extends React.Component {
         <GridItem xs={12} sm={12} md={4}>
           <Card>
             <CardHeader color="primary">
-              <h4 className={classes.cardTitleWhite}>Add Trainer</h4>
-              <p className={classes.cardCategoryWhite}>Add a user as a trainer to a section of machines</p>
+              <h4 className={classes.cardTitleWhite}>Request Training on a Machine Section</h4>
+              <p className={classes.cardCategoryWhite}>Adds your  </p>
             </CardHeader>
             <CardBody>
               
@@ -195,7 +324,7 @@ class DashboardUser extends React.Component {
             </CardFooter>
           </Card>
         </GridItem>
-      </GridContainer>
+                  </GridContainer> */}
     </div>
     );
     else
