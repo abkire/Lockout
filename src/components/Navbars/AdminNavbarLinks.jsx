@@ -40,7 +40,10 @@ class HeaderLinks extends React.Component {
     const { classes } = this.props;
     const { open } = this.state;
     return (
+
+     //to debug
       <div>
+      {/*
         <div className={classes.searchWrapper}>
           <CustomInput
             formControlProps={{
@@ -161,9 +164,10 @@ class HeaderLinks extends React.Component {
           <Hidden mdUp implementation="css">
             <p className={classes.linkText}>Profile</p>
           </Hidden>
-        </Button>
-      </div>
+        </Button>*/}
+              </div>
     );
+   
   }
 }
 

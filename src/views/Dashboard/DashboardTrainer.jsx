@@ -48,7 +48,7 @@ import {
 
 import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardStyle.jsx";
 
-class Dashboard extends React.Component {
+class DashboardTrainer extends React.Component {
   state = {
     value: 0
   };
@@ -62,7 +62,7 @@ class Dashboard extends React.Component {
   render() {
     const { classes } = this.props;
     let user = JSON.parse(localStorage.getItem('user'));
-    if(user.level === 3)
+    if(user.level === 2)
     return (
       <div>
       <GridContainer>
@@ -199,13 +199,13 @@ class Dashboard extends React.Component {
     </div>
     );
     else
-      return (<div>You are not logged in as an admin: {user.username}
-         </div>);
+      return (<div>You not logged in as an trainer: {user.username}
+        </div>); 
   }
 }
 
-Dashboard.propTypes = {
+DashboardTrainer.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(dashboardStyle)(Dashboard);
+export default withStyles(dashboardStyle)(DashboardTrainer);

@@ -27,6 +27,112 @@ const Sidebar = ({ ...props }) => {
       {routes.map((prop, key) => {
         var activePro = " ";
         var listItemClasses;
+        //Only load sidebar for correct role based on routes prop
+        //testing admin as default...
+        let user;
+        if(!localStorage.getItem('user'))
+        {
+          localStorage.setItem('user', JSON.stringify({
+            "username": "test",
+            "level": 1
+          }) );
+          user = JSON.parse(localStorage.getItem('user'));
+          console.log("logged in as: "+user.username+" with role: "+user.level);
+        }
+
+
+       
+        user = JSON.parse(localStorage.getItem('user'));
+
+        //user.level = 3;  HIDES THE SIDEBARS FROM THE INNAPRORIATE USERS
+        if(user)
+        {
+        if(user.level === 3){
+          if(!prop.admin)
+            return null;}
+        else if(user.level === 2){
+          if(!prop.trainer)
+            return null;}
+        else if(user.level === 1){
+          if(!prop.user)
+             return null;}
+        else{
+          if(!prop.noAuth)
+            return null;}
+        }
+     /*   else    // if level of role is undefined go here...
+        {
+          if(!prop.noAuth)
+            return null;
+        }*/
+
+        /*
+       let user = JSON.stringify(localStorage.getItem('user'));
+        if(user && user.level===1) // role = user
+        {
+          if(prop.path === "/logs")
+            return null;
+          else if(prop.path === "/trainers")
+            return null;
+          else if(prop.path === "/users")
+            return null;
+          else if(prop.path === "/adminCommands")
+            return null;
+            else if(prop.path === "/trainerCommands")
+            return null;
+          else if(prop.path === "/login")
+            return null;
+          else if(prop.path === "/register")
+            return null;
+          else
+          {
+
+          }
+        }
+        else if(user && user.level===2)// role = trainer
+        {
+          if(prop.path === "/logs")
+            return null;
+          else if(prop.path === "/trainers")
+            return null;
+          else if(prop.path === "/users")
+            return null;
+          else if(prop.path === "/adminCommands")
+            return null;
+          else if(prop.path === "/login")
+            return null;
+          else if(prop.path === "/register")
+            return null;
+          else
+          {
+
+          }
+
+        }
+        else if(user && user.level ===3) // role = admin
+        {
+          if(prop.path === "/trainerCommands")
+           return null;
+          else if(prop.path === "/userCommands")
+            return null;
+          else if(prop.path === "/login")
+            return null;
+          else if(prop.path === "/register")
+            return null;
+          else
+            {
+              
+            }
+        }
+        else // not signed in
+        {
+          //don't load sidebar for non login / registers
+          if(!(prop.path === "/login" || prop.path === "/register"))
+            return null;
+        }*/
+
+
+       
         if (prop.path === "/upgrade-to-pro") {
           activePro = classes.activePro + " ";
           listItemClasses = classNames({

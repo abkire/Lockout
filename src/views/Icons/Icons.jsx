@@ -15,6 +15,8 @@ import iconsStyle from "assets/jss/material-dashboard-react/views/iconsStyle.jsx
 
 function Icons(props) {
   const { classes } = props;
+  let user = JSON.parse(localStorage.getItem('user'));
+  if(user.level === 3)
   return (
     <GridContainer>
        <GridItem xs={12} sm={12} md={12}>
@@ -84,6 +86,9 @@ function Icons(props) {
             </GridItem>*/}
     </GridContainer>
   );
+  else
+      return (<div>You are not logged in as an admin: {user.username}
+         </div>);
 }
 
 Icons.propTypes = {

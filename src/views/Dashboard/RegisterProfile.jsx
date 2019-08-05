@@ -36,36 +36,80 @@ const styles = {
   }
 };
 
-function UserProfile(props) {
+function RegisterProfile(props){
   const { classes } = props;
   let user = JSON.parse(localStorage.getItem('user'));
-  if(user.level ===3)
+  if(user.level === 0)
   return (
+
     <div>
-      <GridContainer>
-      
-      <GridItem xs={12} sm={12} md={12}>
-        <Card>
-          <CardHeader color="primary">
-            <h4 className={classes.cardTitleWhite}>User Table</h4>
-            <p className={classes.cardCategoryWhite}>
-              A list of Users registered in the database and their roles.
-            </p>
-          </CardHeader>
-          <CardBody>
-            <Table
-              tableHeaderColor="primary"
-              tableHead={["User_ID", "First name", "Last name", "email", "Admin?", "Trainer?"]}
-              tableData={[
-                ["1000000000", "TestF1", "TestL1", "TestEmail1","Yes", "Yes"],
-                ["1000000001", "TestF2", "TestL2", "TestEmail2","No","No"]
+    <GridContainer>
+       
+      <GridItem xs={12} sm={12} md={8}>
+          <Card>
+            <CardHeader color="primary">
+              <h4 className={classes.cardTitleWhite}>Register Profile</h4>
+              <p className={classes.cardCategoryWhite}>Complete your profile</p>
+            </CardHeader>
+            <CardBody>
+              <GridContainer>
                 
-              ]}
-            />
-          </CardBody>
-        </Card>
-      </GridItem>
-      
+                <GridItem xs={12} sm={12} md={3}>
+                  <CustomInput
+                    labelText="Username"
+                    id="username"
+                    formControlProps={{
+                      fullWidth: true
+                    }}
+                  />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={4}>
+                  <CustomInput
+                    labelText="Email address"
+                    id="email-address"
+                    formControlProps={{
+                      fullWidth: true
+                    }}
+                  />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={4}>
+                  <CustomInput
+                    labelText="UTA ID"
+                    id="utaid"
+                    formControlProps={{
+                      fullWidth: true
+                    }}
+                  />
+                </GridItem>
+              </GridContainer>
+              <GridContainer>
+                <GridItem xs={12} sm={12} md={6}>
+                  <CustomInput
+                    labelText="First Name"
+                    id="first-name"
+                    formControlProps={{
+                      fullWidth: true
+                    }}
+                  />
+                </GridItem>
+                <GridItem xs={12} sm={12} md={6}>
+                  <CustomInput
+                    labelText="Last Name"
+                    id="last-name"
+                    formControlProps={{
+                      fullWidth: true
+                    }}
+                  />
+                </GridItem>
+              </GridContainer>
+             
+              
+            </CardBody>
+            <CardFooter>
+              <Button color="primary">Update Profile</Button>
+            </CardFooter>
+          </Card>
+        </GridItem>
       {/*
         <GridItem xs={12} sm={12} md={8}>
           <Card>
@@ -201,9 +245,10 @@ function UserProfile(props) {
       </GridContainer>
     </div>
   );
-  return (<div>You are not logged in as an admin: {user.username}
-    </div>);
-
+  else
+  return (<div>You are already logged in as: {user.username}
+     </div>);
+  
 }
 
-export default withStyles(styles)(UserProfile);
+export default withStyles(styles)(RegisterProfile);

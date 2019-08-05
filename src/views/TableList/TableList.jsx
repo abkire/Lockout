@@ -41,6 +41,8 @@ const styles = {
 
 function TableList(props) {
   const { classes } = props;
+  let user = JSON.parse(localStorage.getItem('user'));
+  if(user.level ===3)
   return (
     <GridContainer>
       <GridItem xs={12} sm={12} md={12}>
@@ -144,6 +146,9 @@ function TableList(props) {
       </GridItem>
     </GridContainer>
   );
+  else
+      return (<div>You are not logged in as an admin: {user.username}
+         </div>);
 }
 
 export default withStyles(styles)(TableList);
