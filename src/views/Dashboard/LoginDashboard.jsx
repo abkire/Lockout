@@ -50,23 +50,73 @@ import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardS
 
 class LoginDashboard extends React.Component {
   state = {
-    value: 0 /*,
-    loggedIn: 0*/
+    value: 0,
+    pin: '',
+    username: ''
 
     };
-    handleLoginClick1 = () => {
-      console.log("handleLoginClick1");
-    //  this.setState({ loggedIn: 1 });
+    
+    
 
+
+    handleLoginClick1 = () => {
+      console.log("handleLoginClick1: "+this.state.username+ " PW: "+this.state.pin);
+      if(this.state.username === 'admin' && this.state.pin ==='1234')
+      {
+        localStorage.setItem('user', JSON.stringify({
+          "username": this.state.username,
+          "level": 3
+        }) );
+        window.location.reload();
+
+
+      }
+      else if(this.state.username === 'trainer' && this.state.pin ==='1234')
+      {
+        localStorage.setItem('user', JSON.stringify({
+          "username": this.state.username,
+          "level": 2
+        }) );
+        window.location.reload();
+
+      }
+      else if(this.state.username === 'user' && this.state.pin ==='1234')
+      {
+        localStorage.setItem('user', JSON.stringify({
+          "username": this.state.username,
+          "level": 1
+        }) );
+        window.location.reload();
+
+      }
+      else
+      {// bad login
+
+        if(this.state.value==0) {
+          this.setState({value: !this.state.value});
+          setTimeout(function(){
+               this.setState({value: 0});
+          }.bind(this),1000);  // wait 5 seconds, then reset to false
+     }
+
+        
+      }
+       //UPDATE JSON USER HERE WHEN LOGGING IN!&&&&*/
+          //if successfull login @said do the below code 
+          // api call getrole(username,pin); replace level 1 : with =>role
+/*
     localStorage.setItem('user', JSON.stringify({
-      "username": "User Login",
+      "username": this.username,
       "level": 1
     }) );    
 
+
+
+
     let user = JSON.parse(localStorage.getItem('user'));
     console.log("Logged in as "+user.username +" with role: "+user.level);
-    //UPDATE JSON USER HERE WHEN LOGGING IN!&&&&
-     window.location.reload();
+    //UPDATE JSON USER HERE WHEN LOGGING IN!&&&&*/
+    // window.location.reload();
 
     };
 
@@ -99,12 +149,25 @@ class LoginDashboard extends React.Component {
     console.log("Logged in as "+user.username +" with role: "+user.level);
     //UPDATE JSON USER HERE WHEN LOGGING IN!&&&&
      window.location.reload();
+     console.log("Logged in as "+user.username +" with role: "+user.level);
 
     };
 
   handleChange = (event, value) => {
-    console.log("handlechange: "+event.target.value);
-    this.setState({ value });
+    console.log("Login Dash handlechange: "+event.target.value);
+    console.log("Login Dash handlechange event target: "+event.target.id);
+    
+    if(event.target.id === 'username')
+    {
+      this.setState({username: event.target.value});
+    }
+    else if(event.target.id ==='pin')
+    {
+      this.setState({pin: event.target.value});
+    }
+    else{}
+  
+    console.log("State: "+this.state.username + " : "+this.state.pin);
   };
 
   handleChangeIndex = index => {
@@ -116,8 +179,7 @@ class LoginDashboard extends React.Component {
   
   render() {
     const { classes } = this.props;
-    let user = JSON.parse(localStorage.getItem('user'));
-    if(user.level === 0)
+    if(localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).level===0)
     return (
     /* { 
         if(this.user.level === 3){
@@ -149,19 +211,26 @@ class LoginDashboard extends React.Component {
                 <GridItem xs={12} sm={12} md={6}>
                   <CustomInput
                     labelText="User ID"
-                    id="user-id"
+                    id="username"
                     formControlProps={{
-                      fullWidth: true
+                            fullWidth: true,
+                            required: true,
+                            onChange: (event) => this.handleChange(event),
+                            type: "text"                            
+                      
                     }}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={6}>
                   <CustomInput
-                  
                     labelText="Pin"
                     id="pin"
                     formControlProps={{
-                      fullWidth: true
+                      fullWidth: true,
+                      required: true,
+                      onChange: (event) => this.handleChange(event),
+                      type: "text"                            
+                
                     }}
                   />
                 </GridItem>
@@ -170,10 +239,12 @@ class LoginDashboard extends React.Component {
               
             </CardBody>
             <CardFooter>
-            {/*}  <Button color="primary" onClick={this.myClick}>Login</Button>*/}
-            <Button color="primary" handleLogoutClick={this.handleLoginClick1}>Login User</Button>
+              {/*}  <Button color="primary" onClick={this.myClick}>Login</Button>*/}
+                {this.state.value ?  <Button  color="alert" handleLogoutClick={this.handleLoginClick1} >Bad Login</Button>
+                :  <Button  color="primary" handleLogoutClick={this.handleLoginClick1} >Login User</Button> }
+          {/*<Button  color="primary" handleLogoutClick={this.handleLoginClick1} >Login User</Button>
             <Button color="primary" handleLogoutClick={this.handleLoginClick2}>Login Trainer</Button>
-            <Button color="primary" handleLogoutClick={this.handleLoginClick3}>Login Admin</Button>
+            <Button color="primary" handleLogoutClick={this.handleLoginClick3}>Login Admin</Button>*/}
 
             </CardFooter>
           </Card>
@@ -182,9 +253,16 @@ class LoginDashboard extends React.Component {
       </GridContainer>
     </div>
     );
-    else
-      return (<div>You are already logged in as: {user.username}
-         </div>);
+    else{
+      if(localStorage.getItem('user'))
+      return (<div>
+        You are already logged in as: {JSON.parse(localStorage.getItem('user')).username}
+        </div>);
+      else
+      return (<div>
+        USER IS UNDEFINED ERROR 
+        </div>);
+    }
   }
 }
 

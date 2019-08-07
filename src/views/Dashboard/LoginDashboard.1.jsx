@@ -48,32 +48,54 @@ import {
 
 import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardStyle.jsx";
 
-class LogoutDashboard extends React.Component {
+class RegisterDashboard extends React.Component {
   state = {
     value: 0,
-    loggedIn: 0
+    pin: '',
+    username: ''
+    
 
     };
-    handleLogoutClick = (event, value) => {
-    console.log("logout");
-     
-      localStorage.setItem('user', JSON.stringify({
-        "username": "loggedOut",
-        "level": 0
-      }) );    
+    
+    
 
-      let user = JSON.parse(localStorage.getItem('user'));
-      console.log("Logged out as "+user.username +" with role: "+user.level);
-      //ADD DATABASE FUNCTION TO SET DATA CHANGED IN USER JSON!!! &&&&*****
-      this.setState({value: 1});
-      console.log("Logged out rerender sidebar "+value);
-      window.location.reload();
 
+    handleRegister = () => {
+      console.log("handleRegister: "+this.state.username+ " PW: "+this.state.pin);
+          //if successfull login @said do the below code 
+          // api call getrole(username,pin); replace level 1 : with =>role
+/*
+    localStorage.setItem('user', JSON.stringify({
+      "username": this.username,
+      "level": 1
+    }) );    
+
+
+
+
+    let user = JSON.parse(localStorage.getItem('user'));
+    console.log("Logged in as "+user.username +" with role: "+user.level);
+    //UPDATE JSON USER HERE WHEN LOGGING IN!&&&&
+     window.location.reload();*/
     };
+
+   
 
   handleChange = (event, value) => {
-    console.log("handlechange: "+event.target.value);
-    this.setState({ value });
+    console.log("Login Dash handlechange: "+event.target.value);
+    console.log("Login Dash handlechange event target: "+event.target.id);
+    
+    if(event.target.id === 'username')
+    {
+      this.setState({username: event.target.value});
+    }
+    else if(event.target.id ==='pin')
+    {
+      this.setState({pin: event.target.value});
+    }
+    else{}
+  
+    console.log("State: "+this.state.username + " : "+this.state.pin);
   };
 
   handleChangeIndex = index => {
@@ -86,54 +108,43 @@ class LogoutDashboard extends React.Component {
   render() {
     const { classes } = this.props;
     let user = JSON.parse(localStorage.getItem('user'));
-    if(user.level != 0)
+    if(user.level === 0)
     return (
-      <div>
-      <GridContainer>
-        <GridItem xs={12} sm={12} md={10}>
+  
+      <div></div>
+      <GridItem xs={12} sm={12} md={8}>
           <Card>
             <CardHeader color="primary">
-              <h4 className={classes.cardTitleWhite}>Logout User</h4>
-              <p className={classes.cardCategoryWhite}>Logout of your account don't forget to do this!</p>
+              <h4 className={classes.cardTitleWhite}>Register Profile</h4>
+              <p className={classes.cardCategoryWhite}>Complete your profile</p>
             </CardHeader>
             <CardBody>
-              
-            <GridContainer>
+              <GridContainer>
                 
                 <GridItem xs={12} sm={12} md={3}>
                   <CustomInput
-                    labelText= {'UserName: ' + user.username}
+                    labelText="Username"
                     id="username"
                     formControlProps={{
-                      fullWidth: true,
-                      disabled: true,
-                      onChange: (event) => this.handleChange(event),
-                      type: "text"                            
-                
-              }}
+                      fullWidth: true
+                    }}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={4}>
                   <CustomInput
-                    labelText={'Email Address: '+user.emailAddress}
-                    id="emailAddress"
+                    labelText="Email address"
+                    id="email-address"
                     formControlProps={{
-                      fullWidth: true,
-                      disabled: true,
-
-                      onChange: (event) => this.handleChange(event),
-                      type: "text"                            
-                
-              }}
+                      fullWidth: true
+                    }}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={4}>
                 <CustomInput
-                    labelText={'User Id: '+ user.userId}
-                    id="userId"
+                    labelText="User ID"
+                    id="username"
                     formControlProps={{
                             fullWidth: true,
-                            disabled: true,
                             onChange: (event) => this.handleChange(event),
                             type: "text"                            
                       
@@ -144,53 +155,42 @@ class LogoutDashboard extends React.Component {
               <GridContainer>
                 <GridItem xs={12} sm={12} md={6}>
                   <CustomInput
-                    labelText={'First name: ' + user.firstName}
-                    id="firstName"
+                    labelText="First Name"
+                    id="first-name"
                     formControlProps={{
-                      fullWidth: true,
-                      disabled: true,
-                      onChange: (event) => this.handleChange(event),
-                      type: "text"                            
-                
-              }}
+                      fullWidth: true
+                    }}
                   />
                 </GridItem>
                 <GridItem xs={12} sm={12} md={6}>
                   <CustomInput
-                    labelText={'Last name: ' + user.lastName}
-                    id="lastName"
+                    labelText="Last Name"
+                    id="last-name"
                     formControlProps={{
-                      fullWidth: true,
-                      disabled: true,
-                      onChange: (event) => this.handleChange(event),
-                      type: "text"                            
-                
-              }}
+                      fullWidth: true
+                    }}
                   />
                 </GridItem>
               </GridContainer>
-              
+             
               
             </CardBody>
             <CardFooter>
-            {/*}  <Button color="primary" onClick={this.myClick}>Login</Button>*/}
-            <Button color="primary" handleLogoutClick={event => this.handleLogoutClick(event, !this.value)}>Click to Logout</Button>
+            <Button color="primary" handleLogoutClick={this.handleRegister} >Register</Button>
             </CardFooter>
           </Card>
         </GridItem>
-        
       </GridContainer>
     </div>
     );
     else
-      return (<div>You are not logged in: {user.username}
+      return (<div>You are already logged in as: {user.username}
          </div>);
-
   }
 }
 
-LogoutDashboard.propTypes = {
+RegisterProfile.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(dashboardStyle)(LogoutDashboard);
+export default withStyles(dashboardStyle)(RegisterProfile);
